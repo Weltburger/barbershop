@@ -685,9 +685,51 @@ a {
   margin-bottom: 15px;
 }
 
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-10px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
 .modal {
   position: fixed;
   color: #000000;
+
+  display: none;
 
   background-color: #f8f3f0;
   background-image: url("../img/pattern-light.jpg");
@@ -695,6 +737,16 @@ a {
   background-repeat: repeat;
 
   box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7);
+}
+
+.modal-show {
+  display: block;
+
+  animation: bounce 0.7s;
+}
+
+.modal-error {
+  animation: shake 0.8s;
 }
 
 .modal h2 {
@@ -722,8 +774,6 @@ a {
   width: 766px;
   height: 561px;
 
-  display: none;
-
   margin-top: -280px;
   margin-left: -390px;
 
@@ -731,14 +781,24 @@ a {
 }
 
 .modal-map p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  
   margin: 0;
+}
+
+.modal-map iframe {
+  position: relative;
+  z-index: 2;
+
+  border: none;
 }
 
 .modal-login {
   top: 120px;
   left: 50%;
-
-  display: none;
 
   width: 300px;
   margin-left: -230px;
